@@ -28,10 +28,17 @@ namespace ArticulosCRUD
                     default :
                         Console.WriteLine("Opcion invalida");
                         Console.ReadLine();
-                        break; //Break para salr
+                        break; 
                 } 
             }
             
+        }
+
+        public void MostrarAgregar()
+        {
+            Console.Clear();
+            Console.WriteLine("Opción Agregar Seleccionada");
+            Console.ReadLine();
         }
     }
 }
