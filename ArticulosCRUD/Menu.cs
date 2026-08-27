@@ -28,7 +28,7 @@ namespace ArticulosCRUD
                     default :
                         Console.WriteLine("Opcion invalida");
                         Console.ReadLine();
-                        break;
+                        break; //Break para salr
                 } 
             }
             
