@@ -3,9 +3,14 @@ namespace ArticulosCRUD
 
     internal class Menu
     {
-        public Menu()
+        private readonly string Titulo;
+        private readonly string[] Opciones;
+        private List<Producto> ListaProductos;
+        public Menu(string titulo, string[] opciones)
         {
-            
+            Titulo = titulo;
+            Opciones = opciones;
+            ListaProductos = new List<Producto>();
         }
         public void MostrarMenu()
         {
@@ -13,14 +18,25 @@ namespace ArticulosCRUD
             while (continuar)
             {
                 Console.Clear();
-                Console.WriteLine("Gestor de articulos");
+                Console.WriteLine(Titulo);
+                Console.WriteLine(new string ('=', Titulo.Length));
+
+                for (int i = 0; i < Opciones.Length; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {Opciones[i]}");
+                    
+                }
+                Console.WriteLine("0. Salir"); 
+
+                
+                /*Console.WriteLine("Gestor de articulos");
                 Console.WriteLine("===================");
                 Console.WriteLine("1. Agregar");
                 Console.WriteLine("2. Listar");
                 Console.WriteLine("3. Buscar");
                 Console.WriteLine("4. Modificar");
                 Console.WriteLine("5. Eliminar");
-                Console.WriteLine("0. Salir");
+                Console.WriteLine("0. Salir"); */
                 string opcion = Console.ReadLine() ?? "";
                 switch (opcion)
                 {
