@@ -8,5 +8,14 @@ namespace ArticulosCRUD
         public decimal Precio { get; set;  }
         public int Id { get; set;  }
 
+        public Producto(int id, string nombre, int cantidad, decimal precio)
+        {
+            Id = id;
+            Nombre = nombre;
+            Cantidad = cantidad;
+            Precio = precio;
+        }
+
     }
+    
 }

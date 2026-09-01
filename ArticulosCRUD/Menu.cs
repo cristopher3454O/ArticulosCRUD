@@ -58,14 +58,35 @@ namespace ArticulosCRUD
         public void MostrarAgregar()
         {
             Console.Clear();
-            Console.WriteLine("Opción Agregar Seleccionada");
+            Console.WriteLine("Agregar Producto");
+            Console.WriteLine("=================");
+            Console.WriteLine();
+            Console.Write("Nombre: ");
+            string nombre = Console.ReadLine();
+            Console.Write("Precio: ");
+            decimal.TryParse(Console.ReadLine(), out decimal precio );
+            Console.Write("Cantidad: ");
+            int.TryParse(Console.ReadLine(), out int cantidad); //Asignar valores Int o Decimal a una variable
+            
+            //Creación de Producto
+            Producto producto = new Producto(ListaProductos.Count() + 1, nombre, cantidad, precio);
+            Console.WriteLine("Producto creao correctamente ");
+            ListaProductos.Add(producto);
+            
             Console.ReadLine();
         }
         public void MostrarListar()
         {
             Console.Clear();
-            Console.WriteLine("Opción Listar Seleccionada");
+            Console.WriteLine("Lista Productos");
+            Console.WriteLine("================");
+
+            foreach (Producto item in ListaProductos)
+            {
+                Console.WriteLine(item.Nombre);
+            }
             Console.ReadLine();
+
         }
         public void MostrarBuscar()
         {
