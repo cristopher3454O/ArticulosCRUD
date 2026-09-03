@@ -5,12 +5,13 @@ namespace ArticulosCRUD
     {
         private readonly string Titulo;
         private readonly string[] Opciones;
-        private List<Producto> ListaProductos;
+        private ManejadorArticulos Manejador { get; set; }
+
         public Menu(string titulo, string[] opciones)
         {
             Titulo = titulo;
             Opciones = opciones;
-            ListaProductos = new List<Producto>();
+            Manejador = new ManejadorArticulos();
         }
         public void MostrarMenu()
         {
@@ -68,31 +69,65 @@ namespace ArticulosCRUD
             Console.Write("Cantidad: ");
             int.TryParse(Console.ReadLine(), out int cantidad); //Asignar valores Int o Decimal a una variable
             
-            //Creación de Producto
+            Manejador.AgregarProducto(nombre, cantidad, precio);
+            Console.WriteLine("Producto creao correctamente ");
+            Console.ReadLine();
+
+
+            /*/Creación de Producto
             Producto producto = new Producto(ListaProductos.Count() + 1, nombre, cantidad, precio);
             Console.WriteLine("Producto creao correctamente ");
-            ListaProductos.Add(producto);
+            ListaProductos.Add(producto); */
             
-            Console.ReadLine();
         }
         public void MostrarListar()
         {
             Console.Clear();
             Console.WriteLine("Lista Productos");
             Console.WriteLine("================");
+            Manejador.ListarProductos();
 
-            foreach (Producto item in ListaProductos)
-            {
-                Console.WriteLine(item.Nombre);
-            }
+
             Console.ReadLine();
 
         }
         public void MostrarBuscar()
         {
+            int id;
             Console.Clear();
-            Console.WriteLine("Opción Buscar Seleccionada");
+            Console.WriteLine("Buscar Producto por ID");
+            Console.WriteLine("=======================");
+            id = PedirValorEntero("ID");
+            Producto resultado = Manejador.BuscarProductoPorID(id);
+            if (resultado != null)
+            {
+                Console.WriteLine(resultado.ToString());
+            }
+            else
+            {
+                Console.WriteLine("Producto no encontrado");
+            }
             Console.ReadLine();
+
+            
+
+        }
+
+        public int PedirValorEntero(string titulo)
+        {
+            while (true)
+            {
+                Console.WriteLine($"{titulo}: ");
+                if (int.TryParse(Console.ReadLine(), out int valor))
+                {
+                    return valor;
+                }
+                else
+                {
+                    Console.WriteLine("Valor no valido. Ingresa nuevamente. ");
+                    Console.ReadLine();
+                }
+            }
         }
         public void MostrarModificar()
         {

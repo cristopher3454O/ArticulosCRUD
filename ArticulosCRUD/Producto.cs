@@ -16,6 +16,10 @@ namespace ArticulosCRUD
             Precio = precio;
         }
 
+        public override string ToString()
+        {
+            return $"ID: {Id}, Nombre {Nombre}, Precio: {Precio}, Cantidad {Cantidad}";
+        }
     }
     
 }
