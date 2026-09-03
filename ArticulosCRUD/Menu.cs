@@ -45,8 +45,9 @@ namespace ArticulosCRUD
                     case "1": MostrarAgregar(); break;
                     case "2": MostrarListar(); break;
                     case "3": MostrarBuscar(); break;
-                    case "4": MostrarModificar(); break;
-                    case "5": MostrarEliminar(); break;
+                    case "4": MostrarBuscarNombre(); break;
+                    case "5": MostrarModificar(); break;
+                    case "6": MostrarEliminar(); break;
                     default :
                         Console.WriteLine("Opcion invalida");
                         Console.ReadLine();
@@ -54,6 +55,23 @@ namespace ArticulosCRUD
                 } 
             }
             
+        }
+
+        private void MostrarBuscarNombre()
+        {
+            Console.Clear();
+            Console.WriteLine("Buscar por nombre");
+            Console.WriteLine("=================");
+            Console.WriteLine();
+            Console.WriteLine("Nombre: ");
+
+
+            String nombre = Console.ReadLine();
+            foreach (Producto item in Manejador.BuscarProductosPorNombre(nombre))
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.ReadLine();
         }
 
         public void MostrarAgregar()
@@ -108,8 +126,6 @@ namespace ArticulosCRUD
                 Console.WriteLine("Producto no encontrado");
             }
             Console.ReadLine();
-
-            
 
         }
 
